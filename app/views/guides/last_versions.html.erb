@@ -1,0 +1,8 @@
+
+<% @guides.each do |g| %>
+	<% user = User.find_by(id: g.versions.last.whodunnit) %>
+	<h3> Guía <%= g.name %> Versión <%= g.versions.last.index %> </h3>
+	<h4> Cambio por:  <%= user.email %></h4>
+	Último evento: 
+	<%= @event_names[g.versions.last.event] || g.versions.last.event %>
+<% end %>

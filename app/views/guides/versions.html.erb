@@ -1,0 +1,13 @@
+<h1> Guía </h1>
+
+<%= @guide.name %>
+<%= @guide.content %>
+
+<% @guide.versions.each do |v| %>
+	<% user = User.find_by(id: v.whodunnit) %>
+	<h3>  Versión <%= v.index %> </h3>
+	<h4> Cambio por:  <%= user.email %></h4>
+	Último evento:
+	<%= @event_names[v.event] || v.event %>
+<% end %>
+
